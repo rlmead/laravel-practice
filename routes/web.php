@@ -18,5 +18,18 @@ Route::get('/', function () {
 });
 
 Route::get('/test', function () {
-    return view('test');
+    return view('test', [
+        'name' => request('name')
+    ]);
+});
+
+Route::get('/posts/{post}', function ($post) {
+    $all_posts = [
+        '1' => 'post one',
+        '2' => 'post two'
+    ];
+
+    return view('post', [
+        'post' => $all_posts[$post],
+    ]);
 });
