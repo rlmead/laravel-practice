@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use DB;
+use App\Models\Post;
 
 class PostController extends Controller
 {
     public function show($slug)
     {
-        // $all_posts = [
-        //     '1' => 'post one',
-        //     '2' => 'post two'
-        // ];
-
-        $post = \DB::table('posts')->where('slug', $slug)->first();
+        // $post = DB::table('posts')->where('slug', $slug)->first();
+        $post = Post::where('slug', $slug)->first();
         
+        if (! $post) {
+            abort(404);
+        }
+
         return view('post', [
             'post' => $post
         ]);
