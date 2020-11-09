@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\Post;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
