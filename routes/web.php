@@ -25,3 +25,7 @@ Route::get('/test', function () {
 
 use App\Http\Controllers\PostController;
 Route::get('posts/{post}', [PostController::class, 'show']);
+
+Route::get('/contact', function() {
+    return view('contact');
+});
