@@ -29,7 +29,11 @@ Route::get('/posts/{post}', function ($post) {
         '2' => 'post two'
     ];
 
+    if (! array_key_exists($post, $all_posts)) {
+        abort(404, 'NO SUCH POST');
+    }
+
     return view('post', [
-        'post' => $all_posts[$post],
+        'post' => $all_posts[$post]
     ]);
 });
