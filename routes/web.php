@@ -23,17 +23,20 @@ Route::get('/test', function () {
     ]);
 });
 
-Route::get('/posts/{post}', function ($post) {
-    $all_posts = [
-        '1' => 'post one',
-        '2' => 'post two'
-    ];
+use App\Http\Controllers\PostController;
+Route::get('posts/{post}', [PostController::class, 'show']);
 
-    if (! array_key_exists($post, $all_posts)) {
-        abort(404, 'NO SUCH POST');
-    }
+// Route::get('/posts/{post}', function ($post) {
+//     $all_posts = [
+//         '1' => 'post one',
+//         '2' => 'post two'
+//     ];
 
-    return view('post', [
-        'post' => $all_posts[$post]
-    ]);
-});
+//     if (! array_key_exists($post, $all_posts)) {
+//         abort(404, 'NO SUCH POST');
+//     }
+
+//     return view('post', [
+//         'post' => $all_posts[$post]
+//     ]);
+// });
