@@ -6,19 +6,17 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function show($post)
+    public function show($slug)
     {
-        $all_posts = [
-            '1' => 'post one',
-            '2' => 'post two'
-        ];
+        // $all_posts = [
+        //     '1' => 'post one',
+        //     '2' => 'post two'
+        // ];
 
-        if (! array_key_exists($post, $all_posts)) {
-            abort(404, 'NO SUCH POST');
-        }
-
+        $post = \DB::table('posts')->where('slug', $slug)->first();
+        
         return view('post', [
-            'post' => $all_posts[$post]
+            'post' => $post
         ]);
     }
 }

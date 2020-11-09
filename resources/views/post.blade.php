@@ -7,6 +7,6 @@
 </head>
 <body>
     <div>here i am</div>
-    <div>{{$post}}</div>
+    <div>{{$post->body}}</div>
 </body>
 </html>
