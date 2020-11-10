@@ -26,16 +26,22 @@ class ArticlesController extends Controller
 
     public function store()
     {
-        request()->validate([
-            'title' => ['required', 'min:3', 'max:255'],
-            'excerpt' => ['required'],
-            'body' => ['required']
-        ]);
         $article = new Article();
+        
+        $this->validateArticle();
+        
         $article->title = request('title');
         $article->excerpt = request('excerpt');
         $article->body = request('body');
         $article->save();
+
+        // less secure (must reset $guarded in Article.php)
+        // Article::create(request()->validate([
+        //     'title' => 'required',
+        //     'excerpt' => 'required',
+        //     'body' => 'required',
+        // ]));
+
         return redirect('/articles');
     }
 
@@ -46,15 +52,25 @@ class ArticlesController extends Controller
 
     public function update(Article $article)
     {
-        request()->validate([
-            'title' => ['required', 'min:3', 'max:255'],
-            'excerpt' => ['required'],
-            'body' => ['required']
-        ]);
+        $this->validateArticle();
+
         $article->title = request('title');
         $article->excerpt = request('excerpt');
         $article->body = request('body');
         $article->save();
+        
         return redirect('/articles/' . $article->id);
     }
+
+    protected function validateArticle() 
+    {
+        return request()->validate([
+            'title' => ['required', 'min:3', 'max:255'],
+            'excerpt' => ['required'],
+            'body' => ['required']
+        ]);
+    }
+
 }
+
+
