@@ -34,7 +34,7 @@ Released   : 20140225
             </div>
             <div id="menu">
                 <ul>
-                    <li class="{{ Request::path() === 'test' ? 'current_page_item' : ''}}"><a href="test" accesskey="1" title="">Homepage</a></li>
+                    <li class="{{ Request::path() === 'test' ? 'current_page_item' : ''}}"><a href="/test" accesskey="1" title="">Homepage</a></li>
                     <li class="{{ Request::is('clients') ? 'current_page_item' : ''}}"><a href="#" accesskey="2" title="">Our Clients</a></li>
                     <li class="{{ Request::path() === 'about' ? 'current_page_item' : ''}}"><a href="/about" accesskey="3" title="">About Us</a></li>
                     <li class="{{ Request::is('articles') ? 'current_page_item' : ''}}"><a href="/articles" accesskey="4" title="">articles</a></li>
