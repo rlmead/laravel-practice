@@ -21,6 +21,7 @@ Released   : 20140225
     <link href="/css/default.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
     <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 </head>
@@ -36,7 +37,7 @@ Released   : 20140225
                     <li class="{{ Request::path() === 'test' ? 'current_page_item' : ''}}"><a href="test" accesskey="1" title="">Homepage</a></li>
                     <li class="{{ Request::is('clients') ? 'current_page_item' : ''}}"><a href="#" accesskey="2" title="">Our Clients</a></li>
                     <li class="{{ Request::path() === 'about' ? 'current_page_item' : ''}}"><a href="/about" accesskey="3" title="">About Us</a></li>
-                    <li class="{{ Request::is('articles') ? 'current_page_item' : ''}}"><a href="articles" accesskey="4" title="">articles</a></li>
+                    <li class="{{ Request::is('articles') ? 'current_page_item' : ''}}"><a href="/articles" accesskey="4" title="">articles</a></li>
                     <li class="{{ Request::is('clients') ? 'current_page_item' : ''}}"><a href="#" accesskey="5" title="">Contact Us</a></li>
                 </ul>
             </div>

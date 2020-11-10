@@ -37,4 +37,7 @@ Route::get('/about', function() {
 });
 
 use App\Http\Controllers\ArticlesController;
-Route::get('articles/{article}', [ArticlesController::class, 'show']);
+Route::get('/articles', [ArticlesController::class, 'index']);
+Route::post('/articles', [ArticlesController::class, 'store']);
+Route::get('/articles/create', [ArticlesController::class, 'create']);
+Route::get('/articles/{article}', [ArticlesController::class, 'show']);
