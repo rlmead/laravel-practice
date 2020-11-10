@@ -42,7 +42,7 @@ class ArticlesController extends Controller
         //     'body' => 'required',
         // ]));
 
-        return redirect('/articles');
+        return redirect(route('articles.index'));
     }
 
     public function edit(Article $article)
@@ -58,8 +58,8 @@ class ArticlesController extends Controller
         $article->excerpt = request('excerpt');
         $article->body = request('body');
         $article->save();
-        
-        return redirect('/articles/' . $article->id);
+
+        return redirect($article->path());
     }
 
     protected function validateArticle() 
@@ -72,5 +72,3 @@ class ArticlesController extends Controller
     }
 
 }
-
-

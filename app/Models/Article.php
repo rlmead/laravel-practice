@@ -9,6 +9,11 @@ class Article extends Model
 {
     use HasFactory;
 
+    public function path()
+    {
+        return route('articles.show', $this);
+    }
+
     // protected $guarded = [];
 
     // public function getRouteKeyName()
