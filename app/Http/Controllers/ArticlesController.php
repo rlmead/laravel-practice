@@ -27,19 +27,25 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view('articles.create');
+        return view('articles.create', [
+            'tags' => Tag::all()
+        ]);
     }
 
     public function store()
     {
+        // dd(request()->all()); //works as expected
         $article = new Article();
         
-        $this->validateArticle();
-        
+        // had issues using validate_article for the template here
+        $article->user_id = 13;
         $article->title = request('title');
         $article->excerpt = request('excerpt');
         $article->body = request('body');
+        
         $article->save();
+        
+        $article->tags()->attach(request('tags')); // must happen after article is saved (doesn't get added to article object - updates article_tag table)
 
         // less secure (must reset $guarded in Article.php)
         // Article::create(request()->validate([
@@ -73,7 +79,8 @@ class ArticlesController extends Controller
         return request()->validate([
             'title' => ['required', 'min:3', 'max:255'],
             'excerpt' => ['required'],
-            'body' => ['required']
+            'body' => ['required'],
+            'tags' => 'exists:tags,id'
         ]);
     }
 
